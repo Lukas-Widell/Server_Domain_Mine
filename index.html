@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-last-updated="2026-03-05">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'" />
+    <title>widell.dev: Directory</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main class="card" aria-label="Personal directory landing page">
+    <header class="top">
+        <h1>widell.dev: Directory</h1>
+        <div class="tagline">@author Lukas Widell</div>
+    </header>
+
+    <section class="middle">
+        <p class="joke-line">This is a perfectly ordinary mail domain...<br /><span class="aside-line">if you ignore the suspiciously functional links.</span></p>
+
+        <div class="groups-stack">
+            <section class="group" aria-labelledby="contact-heading">
+                <h2 id="contact-heading" class="section-title">@contact</h2>
+                <ul class="links">
+                    <li class="row">
+                        <span class="label">email:</span>
+                        <a id="emailLink" href="#" data-email-state="hidden" aria-label="Reveal email address">click to reveal</a>
+                        <button id="copyEmailBtn" class="copy-btn" type="button" aria-label="Copy email address">Copy</button>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="group" aria-labelledby="links-heading">
+                <h2 id="links-heading" class="section-title">@links</h2>
+                <ul class="links">
+                    <li class="row">
+                        <span class="label">linkedin:</span>
+                        <a href="https://www.linkedin.com/in/lukas-widell-96b147231/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/lukas-widell-96b147231/</a>
+                    </li>
+
+                    <li class="row">
+                        <span class="label">github:</span>
+                        <a href="https://github.com/Lukas-Widell" target="_blank" rel="noopener noreferrer">https://github.com/Lukas-Widell</a>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="group" aria-labelledby="metadata-heading">
+                <h2 id="metadata-heading" class="section-title">@metadata</h2>
+                <ul class="links">
+                    <li class="row">
+                        <span class="label">last updated:</span>
+                        <time id="lastUpdated" class="meta-value" datetime="">--</time>
+                    </li>
+                    <li class="row">
+                        <span class="label">location:</span>
+                        <span class="meta-value">Sweden, Malmö</span>
+                    </li>
+                    <li class="row">
+                        <span class="label">UTC + 1:</span>
+                        <span id="utcPlusOneTime" class="meta-value">--:--:--</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="footer-broadcast" aria-label="System broadcast">
+            <div class="broadcast-main">Terminal Connection Node reached.</div>
+            <div class="broadcast-sub">Displaying Backup.</div>
+        </div>
+    </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="main.js"></script>
+</body>
+</html>
