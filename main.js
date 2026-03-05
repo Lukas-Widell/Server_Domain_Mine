@@ -49,9 +49,9 @@
     if (!emailLink) return;
     const full = ensureEmailResolved();
     const prefix = getEmailPrefix(full);
-    emailLink.textContent = prefix + ".[click to show email]";
+    emailLink.textContent = prefix + ".[click to reveal email]";
     emailLink.setAttribute("data-email-state", "hidden");
-    emailLink.setAttribute("aria-label", "Reveal rest of email address");
+    emailLink.setAttribute("aria-label", "Reveal email address");
   }
 
   function revealEmailRest() {
@@ -103,8 +103,7 @@
   function updateUtcPlusOneTime() {
     if (!utcPlusOneTime) return;
     const now = new Date();
-    const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
-    const utcPlusOne = new Date(utcMs + 60 * 60000);
+    const utcPlusOne = new Date(now.getTime() + 60 * 60000);
     const hh = String(utcPlusOne.getUTCHours()).padStart(2, "0");
     const mm = String(utcPlusOne.getUTCMinutes()).padStart(2, "0");
     const ss = String(utcPlusOne.getUTCSeconds()).padStart(2, "0");
