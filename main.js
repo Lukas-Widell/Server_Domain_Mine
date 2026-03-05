@@ -49,7 +49,7 @@
     if (!emailLink) return;
     const full = ensureEmailResolved();
     const prefix = getEmailPrefix(full);
-    emailLink.textContent = prefix + ".[click to reveal rest]";
+    emailLink.textContent = prefix + ".[click to show email]";
     emailLink.setAttribute("data-email-state", "hidden");
     emailLink.setAttribute("aria-label", "Reveal rest of email address");
   }
