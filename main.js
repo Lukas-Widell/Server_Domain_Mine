@@ -36,14 +36,31 @@
 
     resolvedEmail = decodeEmail();
 
-    if (emailLink) {
-      emailLink.textContent = resolvedEmail;
-      emailLink.href = "mailto:" + resolvedEmail;
-      emailLink.setAttribute("data-email-state", "revealed");
-      emailLink.setAttribute("aria-label", "Send email");
-    }
-
     return resolvedEmail;
+  }
+
+  function getEmailPrefix(full) {
+    const at = full.indexOf("@");
+    const local = at >= 0 ? full.slice(0, at) : full;
+    return local.split(".")[0] || local;
+  }
+
+  function setEmailRevealPrompt() {
+    if (!emailLink) return;
+    const full = ensureEmailResolved();
+    const prefix = getEmailPrefix(full);
+    emailLink.textContent = prefix + ".[click to reveal rest]";
+    emailLink.setAttribute("data-email-state", "hidden");
+    emailLink.setAttribute("aria-label", "Reveal rest of email address");
+  }
+
+  function revealEmailRest() {
+    if (!emailLink) return;
+    const full = ensureEmailResolved();
+    const prefix = getEmailPrefix(full);
+    emailLink.textContent = prefix + full.slice(prefix.length);
+    emailLink.setAttribute("data-email-state", "revealed");
+    emailLink.setAttribute("aria-label", "Email address revealed");
   }
 
   function showToast(message) {
@@ -74,9 +91,10 @@
 
   async function copyEmailToClipboard() {
     const value = ensureEmailResolved();
+    revealEmailRest();
     try {
       await copyText(value);
-      showToast("Email copied");
+      showToast("Full email copied");
     } catch {
       showToast("Couldn't copy (try selecting manually)");
     }
@@ -113,10 +131,12 @@
 
   if (emailLink) {
     emailLink.addEventListener("click", (e) => {
+      e.preventDefault();
       if (emailLink.getAttribute("data-email-state") === "hidden") {
-        e.preventDefault();
-        ensureEmailResolved();
+        revealEmailRest();
+        return;
       }
+      showToast("Use Copy for full email");
     });
   }
 
@@ -125,6 +145,7 @@
   }
 
   setLastUpdatedDate();
+  setEmailRevealPrompt();
   if (utcPlusOneTime) {
     updateUtcPlusOneTime();
     setInterval(updateUtcPlusOneTime, 1000);
